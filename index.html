@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Maily 💖</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #ff758c, #ff7eb3);
+    font-family: Arial;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* NOMBRE */
+.nombre {
+    font-size: 60px;
+    animation: brillo 2s infinite alternate;
+}
+
+@keyframes brillo {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 30px yellow; }
+}
+
+/* LOGIN */
+#login { margin-top: 120px; }
+
+/* BOTÓN */
+button {
+    padding: 18px 40px;
+    font-size: 22px;
+    border-radius: 20px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* CONTENIDO */
+#contenido { display: none; }
+
+img {
+    width: 260px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 5px solid white;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+/* CORAZONES */
+.heart {
+    position: absolute;
+    animation: caer 5s linear infinite;
+}
+
+@keyframes caer {
+    from { transform: translateY(-10px); }
+    to { transform: translateY(100vh); }
+}
+
+/* JUEGO */
+#game { display: none; }
+
+#corazonJuego {
+    font-size: 40px;
+    position: absolute;
+    cursor: pointer;
+}
+
+/* FINAL CINE */
+#pantallaFinal {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+}
+
+#contenidoFinal {
+    text-align:center;
+    animation: zoom 1s;
+}
+
+@keyframes zoom {
+    from { transform: scale(0.5); }
+    to { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
+</audio>
+
+<!-- LOGIN -->
+<div id="login">
+<h2>💖 Ingresa la contraseña 💖</h2>
+<p>Pista: 📅 nuestra fecha 😉</p>
+<input type="password" id="clave">
+<br><br>
+<button onclick="verificar()">Entrar</button>
+</div>
+
+<!-- CONTENIDO -->
+<div id="contenido">
+<h1 class="nombre">Maily 💖</h1>
+
+<img id="imagen" src="file:///C:/Users/Administrador/Pictures/fondos%20de%20pantalla/pikachu-abstracto-minimalista_5120x2880_xtrafondos.com%20(1).jpg">
+
+<p id="frase">Haz clic para comenzar 💕</p>
+
+<button onclick="siguiente()">Siguiente ❤️</button>
+
+<div id="game">
+<h2>🎮 Atrapa el corazón 😍</h2>
+<p id="puntos">Puntos: 0 / 8</p>
+<div id="corazonJuego">❤️</div>
+</div>
+</div>
+
+<!-- FINAL -->
+<div id="pantallaFinal">
+<div id="contenidoFinal">
+<h2>💖 Para ti, Maily 💖</h2>
+
+<iframe width="320" height="200"
+src="https://www.youtube.com/embed/wC_sOpQjvWE?autoplay=1"
+frameborder="0" allow="autoplay" allowfullscreen>
+</iframe>
+
+<p>Gracias por existir en mi vida 💕</p>
+</div>
+</div>
+
+<script>
+
+// CONTRASEÑA
+function verificar(){
+let pass=document.getElementById("clave").value;
+if(pass==="0101"){
+login.style.display="none";
+contenido.style.display="block";
+}else{
+alert("Incorrecto 😢");
+}
+}
+
+// FRASES
+let paso=0;
+
+function siguiente(){
+paso++;
+
+if(paso==1){
+frase.innerHTML="Maily eres lo mejor 💖";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m1.jpeg";
+}
+else if(paso==2){
+frase.innerHTML="Tu sonrisa ilumina 😍";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m1.jpeg";
+}
+else if(paso==3){
+frase.innerHTML="Pienso en ti ❤️";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m2.jpeg";
+}
+else if(paso==4){
+frase.innerHTML="Cada día más 😏";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m2.jpeg";
+}
+else if(paso==5){
+frase.innerHTML="Eres mi felicidad 💕";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m3.jpeg";
+}
+else if(paso==6){
+frase.innerHTML="Contigo todo es mejor";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m3.jpeg";
+}
+else if(paso==7){
+frase.innerHTML="Me haces feliz 💖";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m4.jpeg";
+}
+else if(paso==8){
+frase.innerHTML="Eres única ❤️";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m4.jpeg";
+}
+else if(paso==9){
+frase.innerHTML="Siempre contigo 😏";
+imagen.src="file:///C:/Users/Administrador/Pictures/m/m5.jpeg";
+}
+else if(paso==10){
+frase.innerHTML="Ahora juega amor jejeej😍";
+game.style.display="block";
+iniciarJuego();
+}
+}
+
+// CORAZONES
+setInterval(()=>{
+let c=document.createElement("div");
+c.className="heart";
+c.innerHTML="❤️";
+c.style.left=Math.random()*100+"vw";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),5000);
+},300);
+
+// JUEGO
+let puntos=0;
+
+function iniciarJuego(){
+let corazon=document.getElementById("corazonJuego");
+mover();
+
+corazon.onclick=function(){
+puntos++;
+document.getElementById("puntos").innerHTML="Puntos: "+puntos+" / 8";
+
+if(puntos>=8){
+mostrarVideo(); // 🔥 desbloquea final
+}
+
+mover();
+}
+}
+
+function mover(){
+let c=document.getElementById("corazonJuego");
+c.style.top=Math.random()*80+"vh";
+c.style.left=Math.random()*80+"vw";
+}
+
+// FINAL
+function mostrarVideo(){
+document.getElementById("pantallaFinal").style.display="flex";
+}
+
+</script>
+
+</body>
+</html>
